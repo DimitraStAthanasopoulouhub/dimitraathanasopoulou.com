@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dimitra Athanasopoulou | PRDA</title>
   <meta name="description" content="Official website for PRDA (Pre-Response Discernment Architecture) by Dimitra Athanasopoulou.">
+
   <style>
     :root{
-      --bg:#f7f7f5;
-      --text:#111111;
-      --muted:#5f5f5f;
-      --line:#dddddd;
-      --accent:#111111;
+      --bg:#f6f7fb;
+      --surface:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#111827;
+      --accent-soft:#eef2ff;
       --card:#ffffff;
+      --shadow:0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius:20px;
     }
 
     *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
@@ -25,10 +34,14 @@
       line-height:1.65;
     }
 
+    a{
+      color:inherit;
+    }
+
     .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
+      max-width:1120px;
+      margin:0 auto;
+      padding:32px 20px 72px;
     }
 
     .topline{
@@ -38,92 +51,239 @@
       letter-spacing:.02em;
     }
 
-    h1{
-      font-size:44px;
-      line-height:1.1;
-      margin:0 0 14px;
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:40px;
+      align-items:center;
+      padding:32px 0 40px;
     }
 
-    .subtitle{
-      font-size:20px;
+    .hero-copy h1{
+      font-size:56px;
+      line-height:1.05;
+      margin:0 0 16px;
+      letter-spacing:-0.03em;
+    }
+
+    .hero-copy .subtitle{
+      font-size:22px;
+      color:#374151;
+      margin:0 0 18px;
       max-width:800px;
-      color:#222;
-      margin-bottom:28px;
     }
 
-    .buttons{
+    .hero-copy .intro{
+      font-size:17px;
+      color:var(--muted);
+      margin:0;
+      max-width:760px;
+    }
+
+    .hero-actions{
       display:flex;
-      gap:12px;
       flex-wrap:wrap;
-      margin-bottom:44px;
+      gap:12px;
+      margin-top:28px;
     }
 
     .btn{
-      display:inline-block;
-      padding:12px 18px;
-      border:1px solid var(--text);
-      color:var(--text);
-      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
       border-radius:999px;
+      text-decoration:none;
+      border:1px solid var(--line);
       background:#fff;
+      color:var(--text);
       font-weight:600;
+      transition:all .18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:var(--shadow);
     }
 
     .btn.primary{
-      background:var(--text);
+      background:var(--accent);
       color:#fff;
+      border-color:var(--accent);
+    }
+
+    .hero-visual{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .visual-card{
+      width:100%;
+      max-width:380px;
+      aspect-ratio:1/1;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72));
+      border:1px solid rgba(255,255,255,0.85);
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+      backdrop-filter: blur(8px);
+    }
+
+    .visual-card img{
+      width:100%;
+      max-width:290px;
+      height:auto;
+      display:block;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:20px;
+      margin-top:18px;
     }
 
     .section{
-      margin-top:42px;
-      padding-top:26px;
-      border-top:1px solid var(--line);
+      grid-column:span 12;
+      padding:28px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
 
-    h2{
-      font-size:28px;
-      line-height:1.2;
-      margin:0 0 16px;
-    }
-
-    p{
+    .section h2{
       margin:0 0 14px;
-      font-size:17px;
+      font-size:32px;
+      line-height:1.15;
+      letter-spacing:-0.02em;
+    }
+
+    .section p{
+      margin:0 0 14px;
+      color:#374151;
+      font-size:16px;
+    }
+
+    .card{
+      background:#fbfcfe;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px 18px 6px;
+      margin-top:14px;
     }
 
     ul{
       margin:0;
-      padding-left:22px;
+      padding-left:20px;
     }
 
     li{
-      margin:0 0 10px;
-      font-size:17px;
+      margin-bottom:12px;
+      color:#374151;
     }
 
-    .card{
-      background:var(--card);
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .mini{
+      padding:22px;
+      background:#fbfcfe;
+      border:1px solid var(--line);
+      border-radius:16px;
+    }
+
+    .mini h3{
+      margin:0 0 10px;
+      font-size:20px;
+    }
+
+    .mini p{
+      margin:0 0 10px;
+      color:#4b5563;
+    }
+
+    .link-block{
+      word-break:break-word;
+      color:#111827;
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    .contact-box{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:22px;
+      background:linear-gradient(180deg, #ffffff, #f8fafc);
       border:1px solid var(--line);
       border-radius:18px;
-      padding:22px;
-      margin-top:16px;
-    }
-
-    .small{
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    a{
-      color:inherit;
     }
 
     .footer{
-      margin-top:50px;
-      padding-top:24px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
+      text-align:center;
       font-size:14px;
+      color:var(--muted);
+      padding:28px 0 10px;
+    }
+
+    @media (max-width: 900px){
+      .hero{
+        grid-template-columns:1fr;
+        gap:24px;
+      }
+
+      .hero-copy h1{
+        font-size:44px;
+      }
+
+      .hero-copy .subtitle{
+        font-size:20px;
+      }
+
+      .two-col{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .wrap{
+        padding:24px 16px 56px;
+      }
+
+      .section{
+        padding:22px;
+      }
+
+      .section h2{
+        font-size:28px;
+      }
+
+      .hero-copy h1{
+        font-size:38px;
+      }
+
+      .hero-copy .subtitle{
+        font-size:18px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
     }
   </style>
 </head>
@@ -131,65 +291,95 @@
   <div class="wrap">
     <div class="topline">Independent AI Governance Research</div>
 
-    <h1>PRDA</h1>
-    <div class="subtitle">
-      Pre-Response Discernment Architecture — a prior decision architecture for justified progression in AI systems.
-    </div>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>PRDA</h1>
+        <p class="subtitle">
+          Pre-Response Discernment Architecture — a prior decision architecture for justified progression in AI systems.
+        </p>
+        <p class="intro">
+          PRDA addresses a governance question that begins before response generation:
+          whether a system should be allowed to proceed at all, under what conditions, within what scope,
+          and with what level of authority before response generation, tool use, memory access, or action execution.
+        </p>
 
-    <div class="buttons">
-      <a class="btn primary" href="https://doi.org/10.5281/zenodo.19371813" target="_blank">Read the paper</a>
-      <a class="btn" href="https://github.com/DimitraStAthanasopoulouhub/prda-open-reference-demo" target="_blank">View GitHub demo</a>
-      <a class="btn" href="mailto:research@dimitraathanasopoulou.com">Contact</a>
-    </div>
-
-    <div class="section">
-      <h2>What PRDA is</h2>
-      <p>
-        PRDA begins from a prior governance question:
-        whether a system should be allowed to proceed at all, under what conditions,
-        within what scope, and with what level of authority before response generation,
-        tool use, memory access, or action execution.
-      </p>
-      <p>
-        It is designed for AI systems that increasingly move beyond simple output generation
-        into tools, memory, and operational decisions.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>How PRDA differs</h2>
-      <p>
-        PRDA does not begin from output review, runtime monitoring, or post-hoc auditability.
-        It begins earlier: at the point of admissibility and justified progression.
-      </p>
-
-      <div class="card">
-        <ul>
-          <li><strong>Beyond pre-deployment governance:</strong> PRDA addresses whether a system should be permitted to progress in a specific case.</li>
-          <li><strong>Beyond output validation:</strong> it does not ask only whether an output is acceptable, but whether the system should have reached that stage at all.</li>
-          <li><strong>Beyond action gating:</strong> it governs response generation, tool use, memory access, and action execution under the same prior decision logic.</li>
-          <li><strong>Beyond generic governance-by-design:</strong> it defines an explicit layer centered on admissibility, conditions, scope, authority, and escalation.</li>
-        </ul>
+        <div class="hero-actions">
+          <a class="btn primary" href="https://doi.org/10.5281/zenodo.19371813" target="_blank">Read the paper</a>
+          <a class="btn" href="https://github.com/DimitraStAthanasopoulouhub/prda-open-reference-demo" target="_blank">View GitHub demo</a>
+          <a class="btn" href="mailto:research@dimitraathanasopoulou.com">Contact</a>
+        </div>
       </div>
-    </div>
 
-    <div class="section">
-      <h2>Public references</h2>
-      <div class="card">
-        <p><strong>Zenodo publication</strong></p>
-        <p><a href="https://doi.org/10.5281/zenodo.19371813" target="_blank">https://doi.org/10.5281/zenodo.19371813</a></p>
-
-        <p style="margin-top:18px;"><strong>GitHub public reference demo</strong></p>
-        <p><a href="https://github.com/DimitraStAthanasopoulouhub/prda-open-reference-demo" target="_blank">https://github.com/DimitraStAthanasopoulouhub/prda-open-reference-demo</a></p>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <img src="prdasymbol.png" alt="PRDA visual symbol">
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Contact</h2>
-      <p>
-        For written communication, research contact, or relevant governance discussion:
-      </p>
-      <p><a href="mailto:research@dimitraathanasopoulou.com">research@dimitraathanasopoulou.com</a></p>
+    <div class="grid">
+      <section class="section">
+        <h2>What PRDA is</h2>
+        <p>
+          PRDA begins from a prior governance question: whether a system should be allowed to proceed at all,
+          under what conditions, within what scope, and with what level of authority before response generation,
+          tool use, memory access, or action execution.
+        </p>
+        <p>
+          It is designed for AI systems that increasingly move beyond simple output generation into tools,
+          memory, and operational decisions.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>How PRDA differs</h2>
+        <p>
+          PRDA does not begin from output review, runtime monitoring, or post-hoc auditability.
+          It begins earlier: at the point of admissibility and justified progression.
+        </p>
+
+        <div class="card">
+          <ul>
+            <li><strong>Beyond pre-deployment governance:</strong> PRDA addresses whether a system should be permitted to progress in a specific case.</li>
+            <li><strong>Beyond output validation:</strong> it does not ask only whether an output is acceptable, but whether the system should have reached that stage at all.</li>
+            <li><strong>Beyond action gating:</strong> it governs response generation, tool use, memory access, and action execution under the same prior decision logic.</li>
+            <li><strong>Beyond generic governance-by-design:</strong> it defines an explicit layer centered on admissibility, conditions, scope, authority, and escalation.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Public references</h2>
+
+        <div class="two-col">
+          <div class="mini">
+            <h3>Zenodo publication</h3>
+            <p>Public archived paper and versioned reference record.</p>
+            <a class="link-block" href="https://doi.org/10.5281/zenodo.19371813" target="_blank">
+              https://doi.org/10.5281/zenodo.19371813
+            </a>
+          </div>
+
+          <div class="mini">
+            <h3>GitHub public reference demo</h3>
+            <p>Minimal public-facing reference demo for practical exploration.</p>
+            <a class="link-block" href="https://github.com/DimitraStAthanasopoulouhub/prda-open-reference-demo" target="_blank">
+              github.com/DimitraStAthanasopoulouhub/prda-open-reference-demo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Contact</h2>
+        <div class="contact-box">
+          <div>
+            <p style="margin:0 0 6px;"><strong>For written communication, research contact, or relevant governance discussion:</strong></p>
+            <a class="link-block" href="mailto:research@dimitraathanasopoulou.com">research@dimitraathanasopoulou.com</a>
+          </div>
+          <a class="btn primary" href="mailto:research@dimitraathanasopoulou.com">Email contact</a>
+        </div>
+      </section>
     </div>
 
     <div class="footer">
